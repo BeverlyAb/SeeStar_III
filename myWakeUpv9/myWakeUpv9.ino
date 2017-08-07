@@ -7,7 +7,8 @@
  * 
  * myWakeUpv9 Protocol:
  * The Feather needs to be woken up by an initial signal or byte sent from the keyboard. Once awake, it will parse 
- * and process commands before it goes back to sleep. This means that the initial byte is not read and excluded from the buffer. 
+ * and process commands before it goes back to sleep. This means that the initial byte is not read and excluded 
+ * from the buffer. 
  * 
  * Commands: 
  * $1TS : Orders Sensor1 to read data and store onto file
@@ -28,7 +29,8 @@
 
 #define SeeStar Serial4
 #define Sensor1 Serial1
-//#define Sensor2 Serial2 // Uncomment this block once Sensor2 is no longer used for data producing and remove all Serial2.write(i++);
+//#define Sensor2 Serial2 
+// Uncomment this block once Sensor2 is no longer used for data producing and remove all Serial2.write(i++);
 #define Sensor3 Serial3
 
 #define S1 1
