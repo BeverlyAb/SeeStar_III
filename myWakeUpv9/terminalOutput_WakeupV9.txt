@@ -1,0 +1,47 @@
+/*
+$SET was not tested as it hangs and does not process time as integers. 
+$GET expresses the same problem of not processing time as integers. 
+*/
+
+//Example of Datalog.txt
+//-----------------------------------------------------------------------------------------------
+Date					 Time		 Sensor			 Reading
+1/1/0				2:32:5			S1				0
+1/1/0				2:32:12			S3				1
+1/1/0				2:32:27			S1				3
+1/1/0				2:32:28			S3				3
+1/1/0				2:32:39			2 : 32 : 39
+1/1/0				2:32:46			NO GO SENSOR
+
+
+//Example of terminal Output for WakeUpv9
+//---------------------------------------------------------------------------------------------
+Awake at 2secs
+Read $1TS at 5secs
+S1                              0
+Going back to sleep
+Awake at 9secs
+Read $3TS at 12secs
+S3                              1
+Going back to sleep
+Awake at 16secs
+Read $LOG at 19secs
+datalog.txt:
+                                2:32:5                  S1                              0
+1/1/0                           2:32:12                 S3                              1
+
+Going back to sleep
+Awake at 25secs
+Read $ATS at 27secs
+S1                              3
+S3                              3
+Going back to sleep
+Awake at 36secs
+Read $GET at 39secs
+2 : 32 : 39
+Going back to sleep
+Awake at 43secs
+Read WRONGOGOGONGO at 46secs
+Invalid Command.
+NO GO SENSOR
+Going back to sleep
