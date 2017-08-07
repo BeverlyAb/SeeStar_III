@@ -1,0 +1,75 @@
+/*
+UART serial pin configurations 
+Note that for Sercom 0,1,3, and 5 are the only ones available for Serial
+when the SD card (SPI) is in use.
+*//*****************************************************************
+ *  Sercom 0 : Mux
+ *  
+SERCOM  Arduino Pins  PAD
+------------------------------------------------------------------
+  0       0           3   PIO_SERCOM
+  0       1           2   PIO_SERCOM
+  0       3           1   PIO_SERCOM
+  0       4 (CS)      0   PIO_SERCOM
+  0       9           3   PIO_SERCOM
+  0       21 (SCL)    2   PIO_SERCOM
+  0       17 (A3)     0   PIO_SERCOM
+  0       18 (A4)     1   PIO_SERCOM
+ *******************************************************************/
+/*****************************************************************
+ *  Sercom 1 : Mux
+ *  
+SERCOM   Arduino Pins  PAD
+------------------------------------------------------------------
+  1       8           1   PIO_SERCOM
+  1       10          2   PIO_SERCOM
+  1       11          0   PIO_SERCOM
+  1       12          3   PIO_SERCOM
+  1       13          1   PIO_SERCOM
+******************************************************************/
+/*****************************************************************
+ *  Sercom 2 : Mux
+ *  
+SERCOM  Arduino Pins  PAD
+------------------------------------------------------------------
+2       0             3   PIO_SERCOM_ALT
+2       2             2   PIO_SERCOM_ALT
+2       3             1   PIO_SERCOM_ALT
+2       4             0   PIO_SERCOM_ALT
+2       5             3   PIO_SERCOM_ALT
+2       22 (MISO)     0   PIO_SERCOM_ALT
+  No pins available because MISO is used for the SD card
+ */
+/*****************************************************************
+ *  Sercom 3 : Mux
+ *  
+SERCOM  Arduino Pins  PAD
+------------------------------------------------------------------
+  3       6           2   PIO_SERCOM_ALT
+  3       10          2   PIO_SERCOM_ALT
+  3       11          0   PIO_SERCOM_ALT
+  3       20(SDA)     0   PIO_SERCOM_ALT
+  3       21(SCL)     0   PIO_SERCOM_ALT
+*******************************************************************/
+/*****************************************************************
+ *  Sercom 4 : Mux
+ *  
+SERCOM  Arduino Pins  PAD
+------------------------------------------------------------------
+4       2             2   PIO_SERCOM_ALT
+4       5             3   PIO_SERCOM_ALT
+4       15 (A1)       0   PIO_SERCOM_ALT
+4       16 (A2)       1   PIO_SERCOM_ALT
+	Used for SPI of SD Card. Chipselect == 4
+*******************************************************************/
+/*****************************************************************
+ *  Sercom 5 : Mux
+ *  
+SERCOM  Arduino Pins  PAD
+------------------------------------------------------------------
+5       6             2   PIO_SERCOM_ALT
+5       7             3   PIO_SERCOM_ALT
+5       19 (A5)       0   PIO_SERCOM_ALT
+5       20 (SDA)      0   PIO_SERCOM_ALT
+5       21 (SCL)      1   PIO_SERCOM_ALT
+*******************************************************************/
