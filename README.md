@@ -17,3 +17,5 @@ SeeStar system and prolong its operating time during long term deployment period
 **Serial_Sleep_Protocol** continues from myWakeUpv9, but processes inputs as bytes and stores them into instantiated buffers. This involved incorporating code from Matt Ducasse's senior project with SeeStar III. This only includes Take Sample and Read Last. Integrating code is still in progress and is inherently messy. (In Progress)  
 
 
+**Timelapse** contains scripts to enumerate and merge images into a single folder taken by the Go Pro Hero 3+ and combine
+them to form  a timelapse video. This mitigates the problem where the Hero 3 + stores 1,000 images in folder 999GOPRO, and subsequently creates folders 100GOPRO to 998GOPRO, which contain a single image.
