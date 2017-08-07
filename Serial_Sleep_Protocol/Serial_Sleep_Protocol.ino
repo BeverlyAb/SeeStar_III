@@ -237,7 +237,7 @@ bool timeout(int n)
 void checkSum(String bufIn)
 {
   chkSum = 0;
-  if(bufIn[bufIn.length() - 2] != 'X') {//Need to clarify why it's 2 and not 1 
+  if(bufIn[bufIn.length() - 2] != 'X') {//Need to clarify why it's 2 and not 1. Maybe it's the additional trailing bit?  
     for(int j = timeStart; j < timeEnd; j++) {
       chkSum += bufIn[j];
     }

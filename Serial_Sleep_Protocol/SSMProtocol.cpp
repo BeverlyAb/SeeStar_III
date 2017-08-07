@@ -6,6 +6,11 @@
  *              in communication protocol between Camera Module
  *              and Sensor Module. Also validates and processes
  *              request packets.
+ * 
+ * EDITOR:      Beverly Abadines
+ * DATE:        8/6/17
+ * DESCRIPTION: Modified to fit basic serial request onto Feather M0, which does not use 
+ *              SoftwareSerial.h
  */
 
 #include "SSMProtocol.h"
@@ -114,52 +119,10 @@ void handleRequest(RequestPacket *req, ResponsePacket *resp) {
  * *resp: Pointer to the ResponsePacket to send back.
  */
 int processRequest(RequestPacket *req, ResponsePacket *resp) {
- /* if (isValidRequest(req)) {
     if(req->op0 == 'T' && req->op1 == 'S')
       return 1;
     else if(req->op0 == 'R' && req->op1 == 'L')
       return 2;
     else 
       return 0;
-  }
-  return 0; 
- */ 
-   /* switch(req->op0) {
-    case 'T':           // Take
-      switch(req->op1) {
-        case 'S':         // Sample
-          return 1;
-          break; //NOT excessive
-        case 'L':         // Log
-          return 2;
-          break;
-        default:          // invalid opcode, drop request;
-          return 0;
-          break;
-      }
-
-    default:            // invalid opcode, drop request;
-      return 0;
-      break;
-  }*/
-  switch(req->op0) {
-    case 'T':
-      switch(req->op1) {
-        case 'S':
-          return 1;
-          break;
-         default:
-          return 0;
-          break;
-      }
-    case 'R':
-      switch(req->op1) {
-        case 'L':
-          return 2;
-          break;
-         default:
-          return 0;
-          break;
-      }
-  }
 }
