@@ -8,8 +8,8 @@
 
 #define SD_LED 8      // write SD
 #define idle 15       // secs of idle before sleeping
-#define timeStart 3   // starting bit of log time
-#define timeEnd   15  // ending bit of log time
+#define timeStart 4   // starting bit of log time
+#define timeEnd   17  // ending bit of log time
 #define totalSensors 2 //total amount of Serials available for Sensor
 
 //Serial Names
@@ -237,12 +237,16 @@ bool timeout(int n)
 void checkSum(String bufIn)
 {
   chkSum = 0;
-  if(bufIn[bufIn.length() - 2] != 'X') {//Need to clarify why it's 2 and not 1. Maybe it's the additional trailing bit?  
-    for(int j = timeStart; j < timeEnd; j++) {
+  //https://henryforceblog.wordpress.com/2015/03/12/designing-a-communication-protocol-using-arduinos-serial-library/
+  //Bufin == $1TSXXXXXXXXXXXXX0?  
+  if(bufIn[bufIn.length() - 3] != 'X') {// Added 2 Char. Debug
+    for(int j = 0; j < 16; j++) { //for(int j = timeStart; j < timeEnd; j++) {
       chkSum += bufIn[j];
     }
+    chkSum = chkSum & 0xFF;
     SeeStar.println("");
-    if(chkSum == bufIn[bufIn.length() -2])
+    
+    if(chkSum == bufIn[bufIn.length() -3])
       writeString("ACK",SS);
     else
       writeString("NACK",SS);
@@ -317,6 +321,7 @@ int awaken()
      }
      // Detect '$' to start buffering serial input
      else if (rx == '$') {
+       appendChar(&buf, rx);
        buf.state = ST_SERBUF_ENABLED;
        SeeStar.write(rx);
      }
@@ -405,7 +410,7 @@ int awaken()
         digitalWrite(SD_LED, HIGH);
       //  Time =  String(month) + "/" + String(day) + "/" + String(year) + "\t\t\t\t" +
         //        String(hours) + ":" + String(minutes) + ":" + String(seconds) + "\t\t\t"; 
-        timeFormat(timeLog.substring(timeStart,timeEnd));
+        timeFormat(timeLog.substring(timeStart,timeEnd-1));
 
         if(Date.length() > 6) { //Need to debug. If/else statement is used because of sleep power problem
           dataFile.print(Date); 
