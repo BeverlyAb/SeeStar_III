@@ -243,6 +243,7 @@ void checkSum(String bufIn)
     for(int j = 0; j < 16; j++) { //for(int j = timeStart; j < timeEnd; j++) {
       chkSum += bufIn[j];
     }
+    chkSum = -chkSum;
     chkSum = chkSum & 0xFF;
     SeeStar.println("");
     
