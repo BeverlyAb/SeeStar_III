@@ -46,10 +46,10 @@ void reset(RequestPacket *req) {
  * *req: RequestPacket to copy request into.
  */
 void decodeRequest(char *string, RequestPacket *req) {
-  req->destID = string[0];
-  req->op0 = string[1];
-  req->op1 = string[2];
-  req->channel = string[3];
+  req->destID = string[1];
+  req->op0 = string[2];
+  req->op1 = string[3];
+  req->channel = string[4];
 }
 
 /*
